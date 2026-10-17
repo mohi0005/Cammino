@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cammino - find your way to work</title>
+<meta name="description" content="Personal career roadmap for skilled people in Tier-2/3 cities.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230e3b43'/><path d='M7 24c6 0 4-8 9-8s3-8 9-8' stroke='%23e8a33d' stroke-width='3' fill='none' stroke-linecap='round'/></svg>">
+<style>
+:root{--teal:#0e3b43;--teal2:#14535e;--sand:#f7f3ea;--amber:#e8a33d;--ink:#1d2a2c;--mut:#6a7a7c;--line:#e4ded0}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--sand);color:var(--ink);line-height:1.5}
+.serif{font-family:Georgia,"Times New Roman",serif}
+header{background:var(--teal);color:#fff}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;letter-spacing:.3px}
+.hero{padding:34px 0 64px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.12;margin:0 0 14px;max-width:640px}
+.hero h1 em{color:var(--amber);font-style:normal}
+.hero p{max-width:540px;color:#c8dcdd;font-size:1.08rem;margin:0}
+.badge{font-size:.78rem;border:1px solid #ffffff44;border-radius:99px;padding:4px 12px;color:#d6e8e9}
+main{margin-top:-36px;padding-bottom:50px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:860px){.grid{grid-template-columns:360px 1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+label{display:block;font-size:.85rem;font-weight:600;margin:14px 0 5px}
+label:first-of-type{margin-top:0}
+input,textarea,select{width:100%;padding:10px 12px;border:1px solid #d3ccba;border-radius:8px;font:inherit;background:#fdfcf9}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+button.primary{width:100%;margin-top:18px;background:var(--teal);color:#fff;border:0;padding:13px;border-radius:9px;font:inherit;font-weight:600;cursor:pointer}
+button.primary:hover{background:var(--teal2)}button:disabled{opacity:.6;cursor:wait}
+.err{color:#b3261e;font-size:.9rem;margin:10px 0 0}
+.empty{display:flex;align-items:center;justify-content:center;min-height:300px;text-align:center;color:var(--mut)}
+.sec{margin-bottom:22px}.sec h3{font-family:Georgia,serif;font-size:1.15rem;margin:0 0 10px;color:var(--teal)}
+.path{border-left:3px solid var(--amber);padding:2px 0 2px 14px;margin:12px 0}
+.path b{display:block}.path small{color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:#f1ece0;border-radius:99px;padding:5px 12px;font-size:.88rem}
+.week{display:flex;gap:14px;margin:12px 0}.wk{flex:none;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:700;font-size:.9rem}
+.week ul{margin:4px 0 0;padding-left:18px}
+.actions{display:flex;gap:10px;justify-content:flex-end}.ghost{background:none;border:1px solid var(--line);border-radius:8px;padding:7px 14px;font:inherit;cursor:pointer}
+.spin{width:26px;height:26px;border:3px solid var(--line);border-top-color:var(--teal);border-radius:50%;animation:s 0.9s linear infinite;margin:0 auto 12px}@keyframes s{to{transform:rotate(360deg)}}
+footer{text-align:center;color:var(--mut);font-size:.82rem;padding:0 22px 30px}
+@media print{header,form,.actions,footer{display:none}main{margin:0}.grid{display:block}}
+</style></head><body>
+<header><div class="wrap">
+<nav><div class="logo"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#14535e"/><path d="M7 24c6 0 4-8 9-8s3-8 9-8" stroke="#e8a33d" stroke-width="3" fill="none" stroke-linecap="round"/></svg>Cammino</div><span class="badge">Supports UN SDG 8</span></nav>
+<div class="hero"><h1 class="serif">Find your way to <em>work that fits</em>.</h1>
+<p>Tell us what you know and where you live. Get job paths, the skills to learn next and a four-week plan, in your own language.</p></div>
+</div></header>
+<main class="wrap"><div class="grid">
+<form class="card" onsubmit="return false">
+<label for="education">Education</label><input id="education" placeholder="B.Com final year, Karimnagar">
+<label for="skills">Skills you have *</label><textarea id="skills" rows="3" placeholder="Excel, Tally, basic Python, spoken Hindi and Telugu"></textarea>
+<label for="interests">What interests you</label><input id="interests" placeholder="Accounting, design, customer support">
+<label for="city">City</label><input id="city" placeholder="Warangal">
+<label for="language">Reply language</label>
+<select id="language"><option>English</option><option>Hindi</option><option>Telugu</option><option>Urdu</option></select>
+<button class="primary" id="go">Show my path</button><p class="err" id="err"></p>
+</form>
+<section class="card" id="out"><div class="empty"><div><p class="serif" style="font-size:1.2rem;margin:0 0 6px">Your plan will appear here</p><p style="margin:0">Fill in the form and press Show my path.</p></div></div></section>
+</div></main>
+<footer>Guidance is AI-generated and indicative. It does not guarantee employment. Inputs are not stored.</footer>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const list=a=>"<ul>"+(a||[]).map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>";
+$("go").onclick=async()=>{
+  $("err").textContent="";$("go").disabled=true;$("go").textContent="Working on it...";
+  $("out").innerHTML='<div class="empty"><div><div class="spin"></div>Building your plan</div></div>';
+  try{
+    const r=await fetch("/api/guidance",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({education:$("education").value,skills:$("skills").value,interests:$("interests").value,city:$("city").value,language:$("language").value})});
+    const d=await r.json(); if(!r.ok) throw new Error(d.error||"Request failed");
+    $("out").innerHTML=
+     `<div class="actions"><button class="ghost" onclick="window.print()">Print / save PDF</button></div>`+
+     `<div class="sec"><h3>Overview</h3><p>${esc(d.summary)}</p></div>`+
+     `<div class="sec"><h3>Paths that fit you</h3>`+(d.job_paths||[]).map(j=>`<div class="path"><b>${esc(j.title)}</b>${esc(j.why_fit)}<br><small>${esc(j.demand_note)}</small></div>`).join("")+`</div>`+
+     `<div class="sec"><h3>Skills to build</h3><div class="chips">${(d.skill_gaps||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`+
+     `<div class="sec"><h3>Your four weeks</h3>`+(d.roadmap||[]).map(w=>`<div class="week"><div class="wk">${esc(w.week)}</div><div><b>${esc(w.focus)}</b>${list(w.tasks)}</div></div>`).join("")+`</div>`+
+     `<div class="sec"><h3>Resume tips</h3>${list(d.resume_tips)}</div>`;
+  }catch(e){$("out").innerHTML='<div class="empty"><div>Something went wrong. Try again.</div></div>';$("err").textContent=e.message}
+  $("go").disabled=false;$("go").textContent="Show my path";
+};
+</script></body></html>
